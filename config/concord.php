@@ -4,7 +4,7 @@ return [
     'modules' => [
         Konekt\AppShell\Providers\ModuleServiceProvider::class => [
             'ui' => [
-                'name' => 'Vanilo',
+                'name' => 'Ta-Chilero',
                 'url' => '/admin/product'
             ]
         ],
