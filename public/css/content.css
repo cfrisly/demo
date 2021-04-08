@@ -1,0 +1,68 @@
+/*********************
+***** Typography *****
+**********************/
+body{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400px;
+    margin: 0px;
+    padding: 0px;
+    padding-top: 0px;
+}
+
+ul li {
+    list-style: none;
+}
+
+a:hover {
+    outline: none;
+    text-decoration: none;
+}
+
+a:focus {
+    outline: none;
+    outline-offset: 0;
+}
+
+a {
+    -webkit-transition: 300ms;
+  	-moz-transition: 300ms;
+    -o-transition: 300ms;
+    transition: 300ms;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Roboto', sans-serif;
+}
+
+/******** Prueba del header ********/
+
+.header-social {
+	display: table;/*
+	padding-bottom: 10px;*/
+	padding: 0px;
+	width: 100%;
+	/*background: #232f3e;*/
+    background: #4c85cd;
+}
+
+.social {
+    margin: 0px auto;
+    display: table;
+}
+
+.social li {
+    float: left;
+    padding: 0px 10px;
+}
+
+.nav-item a {
+    color: #fff;
+}
+
+.fa-facebook-f:hover {
+    color: #008369;
+}
+
+.fa-instagram:hover {
+    color: #f56040;
+}

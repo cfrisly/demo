@@ -1,0 +1,106 @@
+.offcanvas-header { display: none;}
+
+@media (max-widht: 992px) {
+    .offcanvas-header { display: block; }
+    .navbar-collapse {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 100%;
+        width: 100%;
+        padding-right: 1rem;
+        padding-left: 1rem;
+        overflow-y: auto;
+        visibility: hidden;
+        background-color: rgba(66, 82, 109, 0.95);
+        z-index: 1000;
+        transition: visibility 2s ease-in-out, -webkit-transform 2s ease-in-out;
+    }
+    .navbar-collapse.show {
+        visibility: visible;
+        transform: translateX(-100%);
+    }
+}
+
+.navbar-menu {
+    margin: 0;
+    padding: 0;
+    border-bottom: 0px;
+    border-top: 0px;
+}
+
+/*********** menu-logo **********/
+.navbar-logo{
+    /*background: #ff794a;*/
+    background: #fff;
+}
+
+.navbar-brand {
+    width: auto;
+}
+
+.dropdown a {
+    color: #000 !important;
+}
+
+@media screen and (min-width: 860px) {
+    .navbar-logo {
+        width: 100%;
+        padding: 0px;
+    }
+
+    .navbar-search {
+        width: 70%;
+        border-radius: 25px;
+        margin: 10px;
+        padding: 0px;
+        font-size: 20px;
+    }
+} 
+
+
+
+/********************** Prueba meno dos *********************************************/
+.offcanvas-header{ display:none; }
+.screen-overlay {
+  height: 100%;
+  z-index: 30;
+  position: fixed;
+  top: 0;
+  left: 0;
+  opacity:0;
+  visibility:hidden;
+  background-color: rgba(34, 34, 34, 0.6);
+  transition:opacity .2s linear, visibility .1s, width 1s ease-in;
+}
+.screen-overlay.show {
+  transition:opacity .5s ease, width 0s;
+  opacity:1;
+  width:100%;
+  visibility:visible;
+}
+	
+@media all and (max-width:992px) { 
+
+ .offcanvas-header{ display:block; }
+ 
+ .mobile-offcanvas{
+    visibility: hidden;
+    transform:translateX(-100%);
+    border-radius:0; 
+    display:block;
+    position: fixed;
+    top: 0; left:0;
+    height: 100%;
+    z-index: 1200;
+    width:80%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    transition: visibility .2s ease-in-out, transform .2s ease-in-out;
+  }
+
+  .mobile-offcanvas.show{
+    visibility: visible;
+    transform: translateX(0);
+  }
+}
