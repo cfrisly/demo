@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('breadcrumbs')
-    <li class="breadcrumb-item"><a href="{{ route('product.index') }}">All Products</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('product.index') }}">Todos los productos</a></li>
     @if ($product->taxons->count())
         @include('product._breadcrumbs', ['taxon' => $product->taxons->first()])
     @endif
@@ -9,6 +9,7 @@
 @stop
 
 @section('content')
+    <h1></h1>
     <style>
         .thumbnail-container {
             overflow-x: scroll;

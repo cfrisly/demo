@@ -20,24 +20,10 @@
     <link rel="stylesheet" href="{{ asset('css/content.css') }}">
     <!--<link rel="stylesheet" href="{{ asset('css/menu.css') }}">-->
     <link rel="stylesheet" href="{{ asset('css/layout.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 <body>
-    <!-- Menu Social Icons --><!--
-    <div class="social-icons">
-        <div class="container-fluid full-image">
-        </div>
-        <div class="container-fluid nav-color">
-            <div class="row social-bar">
-                <ul class="social-icons-list">
-                    <li class="nav-item"><a class="" href="#"><i>Como comprar</i></a></li>
-                    <li><a class="" href="https://wa.link/jmkqp0"><i class="fab fa-whatsapp"></i></a></li>
-                    <li><a class="" href="#"><i class="fa fa-envelope"></i></a></li>
-                    <li><a class="" href="https://t.me/TaChilerobot"><i class="fab fa-telegram-plane"></i></a></li>
-                    <li><a class="" href=""><i class="fab fa-facebook-f"></i></a></li>
-                </ul>
-            </div>
-        </div>
-    </div>-->
 
     <div class="social-networks">
         <div class="cont">
@@ -53,44 +39,41 @@
         </div>
     </div>
 
-    <div class="logo-bar">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light navegation">
-            <a class="navbar-brand" href="{{ url("/") }}">Tinyfis</a>
-
-           <!--<form id="content-search" action="">
-                <input type="text" name="input" class="input" id="search-input">
-                <button class="search" type="reset" id="search-btn"></button>
-            </form>-->
-
-            <div class="search-box">
-                <input type="text" placeholder=" ">
-                <span></span>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url('/') }}">Tinyfis</a>
+            <div class="collapse navbar-collapse" id="categoriesMenu">
+                @yield('categories-menu')
             </div>
-
-            <!--<a class="navbar-nav" href="#"><i class="fa fa-heart"></i></a>--> 
-            <a class="navbar-nav" href="{{ route('cart.show') }}"><i class="fa fa-shopping-cart"></i></a>
+            <form class="navbar" action="">
+                <input class="cuadro-texto" type="text" placeholder="Buscar...">
+                <a class="search-button input-group-append" href="#"><i class="fa fa-search"></i></a>
+            </form>
 
             @guest
-                <a class="navbar-nav" href="{{ route('login') }}"><i class="fa fa-user"></i></a>
+                <a class="icon-menu" href="{{ route('login') }}"><i class="nav-link fa fa-user"></i></a>
                 @if (Route::has('register'))
                     <a href="{{ route('register') }}">{{ __('Register') }}</a>
                 @endif
-            @else 
+            @else
                 @role('admin')
                     <a href="{{ config('konekt.app_shell.ui.url') }}">Admin</a>
                 @endrole
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->name }} <span class="caret"></span>
+                            {{ Auth::user()->name }}
+                            <span class="caret"></span>
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                <i class="fa fa-user"></i>{{  __(' Salir') }}
+                                <i class="fa fa-user">
+                                    {{ __('Salir') }}
+                                </i>
                             </a>
 
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display:none">
                                 @csrf
                             </form>
                         </div>
@@ -98,72 +81,137 @@
                 </ul>
             @endguest
 
-            <a type="button" data-toggle="collapse" data-target="#navbar_main" aria-controls="navbar_main" aria-expanded="false" aria-label="Toggle navigation" href=""><i class="fas fa-bars"></i></a>
-
-            <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_main" aria-controls="navbar_main" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>-->
-
-            <div class="collapse navbar-collapse" id="navbar_main">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                    </li>
-                </ul>
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link icons-register" href="#"><i class="fa fa-heart"></i></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link icons-register" href="{{ route('cart.show') }}"><i class="fa fa-shopping-cart"></i></a>
-                    </li>
-                    @guest
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}"><i class="fa fa-user"></i></a>
-                        </li>
-                        <li class="nav-item">
-                            @if (Route::has('register'))
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>                                @endif
-                        </li>
-                    @else
-                        @role('admin')
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ config('konekt.app_shell.ui.url') }}">Admin</a>
-                        </li>
-                        @endrole
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }} <span class="caret"></span>
-                            </a>
-
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                                    <i class="fa fa-user"></i>{{ __(' Salir') }}
-                                </a>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form>
-                            </div>
-                        </li>
-                    @endguest
-                </ul>
-            </div>
-        </nav>
-    </div>
-
-    <div>
-        <div class="container">
-            @yield('categories-menu')
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb bg-transparent">
-                    @yield('breadcrumbs')
-                </ol>
-            </nav>
-            @include('flash::message')
+            <a class="icon-menu" href="{{ route('cart.show') }}"><i class="nav-link fa fa-shopping-cart"></i></a>
+            <a class="navbar-toggler" type="button" data-toggle="collapse" data-target="#categoriesMenu" aria-controls="categoriesMenu" aria-expanded="false" aria-label="Toggle navigation" href="">
+                <i class="fas fa-bars"></i>
+            </a>
         </div>
+    </nav>
+
+    <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb bg-transparent">
+                @yield('breadcrumbs')
+            </ol>
+            @include('flash::message')
+        </nav>
 
         @yield('content')
     </div>
+
+    <footer class="footer-section">
+        <div class="container">
+            <div class="footer-cta pt-5 pb-5">
+                <div class="row">
+                    <div class="col-xl-6 col-md-6 mb-30">
+                        <div class="single-cta">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div class="cta-text">
+                                <h4>Dirección</h4>
+                                {{-- <span>0 calle 0-44 Zona 1, Sumpango Sacatepequez, Guatemala</span> --}}
+                                <span>Centro comercial Vista Bella, local 10 Segundo Nivel, Sumpango Sacatepequez</span>
+                                <span>Horario de atención: Lunes a Viernes 10:00 - 18:00 Hrs Sabado: 10:00 - 14:00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-md-6 mb-30">
+                        <div class="single-cta">
+                            <i class="fas fa-phone"></i>
+                            <div class="cta-text">
+                                <h4>Contactanos</h4>
+                                {{-- <span>54695664</span> --}}
+                                <span>1800900</span>
+                            </div>
+                        </div>
+
+                        <div class="single-cta">
+                            <i class="far fa-envelope-open"></i>
+                            <div class="cta-text">
+                                <h4>Escribenos</h4>
+                                <span>grupochiquitosa@gmail.com</span>
+                            </div>
+                        </div>
+                    </div>
+                    {{-- <div class="col-xl-4 col-md-4 mb-30">
+                        <div class="single-cta">
+                            <i class="far fa-envelope-open"></i>
+                            <div class="cta-text">
+                                <h4>Escribenos</h4>
+                                <span>grupochiquitosa@gmail.com</span>
+                            </div>
+                        </div>
+                    </div> --}}
+                </div>
+            </div>
+            <div class="footer-content pt-5 pb-5">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4 mb-50">
+                        <div class="footer-widget">
+                            <div class="footer-logo">
+                                <a class="navbar-brand" href="{{ url('/') }}">Tinyfis</a>
+                            </div>
+                            <div class="footer-text">
+                                <p>Tecnología a tu alcance.</p>
+                            </div>
+                            <div class="footer-social-icon">
+                                <span>Siguenos</span>
+                                <a href=""></a>
+                                <a href=""></a>
+                                <a class="" href="https://wa.link/jmkqp0"><i class="fab fa-whatsapp"></i></a>
+                                <a class="" href="#"><i class="fa fa-envelope"></i></a>
+                                <a class="" href="https://t.me/TaChilerobot"><i class="fab fa-telegram-plane"></i></a>
+                                <a class="" href=""><i class="fab fa-facebook-f"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-6 mb-30">
+                        <div class="footer-widget">
+                            <div class="footer-widget-heading">
+                                <h3>Estado de tu pedido</h3>
+                            </div>
+                            <ul class="ul-footer">
+                                <li><a href="">Preguntas frecuentes</a></li>
+                                <li><a href="{{ url('/garanty') }}">Políticas de Garantía</a></li>
+                                <li><a href="{{ url('/privacy') }}">Política de privacidad</a></li>
+                                <li><a href="">Tiempo de envío</a></li>
+                                <li><a href="">Política de cambio</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-6 mb-50">
+                        <div class="footer-widget">
+                            <div class="footer-widget-heading">
+                                <h3>Suscribete</h3>
+                            </div>
+                            <div class="footer-text mb-25">
+                                <p>Para recibir nuestras ofertas y nuevos productos Suscribete completando el siguiente formulario.</p>
+                            </div>
+                            <div class="subscribe-form">
+                                <form action="#">
+                                    <input type="text" placeholder="Escribe tu correo">
+                                    <button><i class="fab fa-telegram-plane"></i></button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6 text-center text-lg-left">
+                        <div class="copyright-text">
+                            <p>Copyright &copy; 2020, GrupoChiquito SA Derechos recerbados</p>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 d-none d-lg-block text-right">
+                        <span>Tinyfis</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <!-- Scripts -->
     <script src="{{ asset('https://kit.fontawesome.com/265f6e2015.js') }}"></script>

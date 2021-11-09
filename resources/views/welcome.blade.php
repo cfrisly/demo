@@ -1,94 +1,110 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.apprue')
 
-        <title>TinyFis - Home</title>
+@section('title', 'Inicio')
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
+@section('categories-menu')
+    <ul class="navbar-nav">
+        @foreach($taxonomies as $taxonomy)
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{ $taxonomy->name }}
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    @include('product.index._category_level', ['taxons' => $taxonomy->rootLevelTaxons()])
                 </div>
-            @endif
+            </li>
+        @endforeach
+    </ul>
+@stop
 
-            <div class="content">
-                <div class="title m-b-md">
-                    Vanilo Demo
+@section('breadcrumbs')
+    <li class="breadcrumb-item"><a href="{{ route('product.index') }}">Todos los productos</a></li>
+    @if ($taxon)
+        @include('product._breadcrumbs')
+    @endif
+@stop
+
+@section('content')
+
+    <div class="slider">
+        <div id="carouselMain" class="container carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselMain" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselMain" data-slide-to="1"></li>
+                <li data-target="#carouselMain" data-slide-to="2"></li>
+            </ol>
+    
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="img-fluid img-thumbnail" src="images/home/Audifono4Pro.png" alt="Third slide">
                 </div>
+                <div class="carousel-item">
+                    <img class="img-fluid img-thumbnail" src="images/home/Audifono4Pro(1).png" alt="Third slide">
+                </div>
+                <div class="carousel-item">
+                    <img class="img-fluid img-thumbnail" src="images/home/Audifono4Pro.png" alt="Third slide">
+                </div>
+            </div>
+    
+            <a class="carousel-control-prev" href="#carouselMain" role="button" data-slide="prev">
+                <!--<span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
+                <span><i class="fas fa-chevron-left"></i></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselMain" role="button" data-slide="next">
+                <!--<span class="carousel-control-next-icon" aria-hidden="true"></span>-->
+                <span><i class="fas fa-chevron-right"></i></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
 
-                <div class="links">
-                    <a href="{{ config('konekt.app_shell.ui.url') }}">Admin</a>
-                    <a href="{{ route('product.index') }}">Shop Frontend</a>
+    <div class="offers">
+        <div class="section-title-category">
+            <button type="button" class="btn btn-warning section-title"></button>
+        </div>
+    </div>
+
+    <div class="offers">
+        <div class="section-title-category">
+            <button type="button" class="btn btn-warning section-title">
+                <span class="title">Oferta</span>
+            </button>
+        </div>
+        
+        <div class="row">
+            <div class="card col-sm-8">
+                <img class="card-img-top" src="images/home/dose-media.jpg" alt="oferta del día">
+                <div class="card-body">
+                    <h5 class="card-title">Photograpy</h5>
+                    <p class="card-text">TExto en un minuto</p>
+                    <p class="card-text"><small class="text-muted">ultima actualizacion 3 minutos antes</small></p>
+                </div> 
+            </div>
+            <div class="card col-sm-4">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Mini Camara</h5>
+                    <p class="text-center">Puedes utilizarla en cualquier lugar y en cualquier momento pasando desapercibida</p>
+                    <div class="card-price">
+                        {{-- <div class="">
+                            <h2 class="card-body">Q 149</h2>
+                            <div><button type="button" class="btn btn-success">Ver</button></div>
+                        </div> --}}
+                        <div class="row">
+                            <h2 class="card-body">Q 149.99</h2>
+                            <div><button type="button" class="btn btn-success">Ver</button></div>
+                        </div>
+                        <div class="card-discount">
+                            <div>
+                                <div class="one">Price</div>
+                                <div class="two">discount</div>
+                                <div class="three">Home</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </body>
-</html>
+    </div>
+@endsection

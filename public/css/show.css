@@ -1,0 +1,180 @@
+html, body {
+    margin: 0;
+    font-size: 100%;
+    font-family: 'Lato', sans-serif;
+    background: #fff;
+}
+
+body a {
+    text-decoration: none;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+}
+
+a:hover {
+    text-decoration: none;
+}
+input[type="button"],input[type="submit"]{
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+p{
+    margin: 0;
+}
+ul{
+    margin: 0;
+    padding: 0;
+}
+label {
+    margin: 0;
+}
+
+/******** Header *********/
+.header {
+    border-bottom: 1px solid #eee;
+}
+.header ul li{
+    display: inline-block;
+    width: 32%;
+    text-align: center;
+    color: #848484;
+    font-size: 16px;
+    padding: 6px 0;
+}
+
+.header ul li:nth-child(2) {
+    border-left: 1px solid #eee;
+    border-right: 1px solid #eee;
+}
+
+.header ul li a {
+    color: #848484;
+    text-decoration: none;
+}
+
+.header ul li i {
+    margin-right: 12px;
+    top: 2px;
+    /*color: #fda30e;*/
+}
+
+.header ul li:nth-child(3) {
+    text-align: right;
+}
+
+.header ul li:nth-child(1) {
+    text-align: left;
+}
+
+.header-right {
+    text-align: right;
+}
+
+.header-left {
+    text-align: left;
+}
+
+/****** Header-bot ******/
+.header-left img {
+    width: 73%;
+}
+.header-middle{
+    margin-top: 11px;
+}
+.header-bot {
+    padding: 25px 0;
+}
+.header-right ul li {
+    display: inline-block;
+    margin: 0 3px;
+}
+.header-right ul li a {
+    width: 32px;
+    height: 32px;
+    display: block;
+}
+.header-right ul li a.user1 {
+    background: url(../images/img-sp.png) no-repeat --133px --133px;
+}
+.header-right ul li a.user1:hover {
+    transform: inherit;
+}
+.header-right ul li a.fb {
+    background: url(../images/img-sp.png) no-repeat ;
+}
+.header-middle input[type="search"] {
+    outline: none;
+    border: none;
+    width: 100%;
+    padding: 14px 10px;
+    color: #848484;
+    font-size: 16px;
+    border-right: 1px solid #eee; /* Solo puso una linea gris a la derecha*/
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+
+.header-middle form input[type="submit"]{
+    background: url(../images/search.png) no-repeat 4px 0px #fda30e;
+    width: 100%;
+    height: 50px;
+    border: none;
+    padding: 0;
+    border: none;
+    outline: none;
+}
+.search {
+    border-radius: 25px;
+    float: left;
+    width: 57%;
+}
+.section_room {
+    float: left;
+    width: 33%;
+}
+.sear-sub {
+    float: left;
+    width: 10%;
+}
+.header-middle {
+    border: 1px solid #fda30e;
+    border-radius: 25px;
+    padding: 0;
+}
+.header-right ul {
+    margin-top: 20px;
+}
+.section_room select option {
+    line-height: 1.8em;
+}
+.footer-bottom a {
+
+}
+.footer-bottom a span {
+    color: #fff;
+    position: absolute;
+}
+
+/*-- responsive media queries --*/
+@media (max-width: 1024) {
+    .header ul li, .section_room select, .header-middle input[type="search"]{
+        font-size: 14px;
+    }
+    .header-middle {
+        margin-top: 6px;
+    }
+    .header-middle form input[type="submit"] {
+        background: url(../images/search.png) no-repeat 1px 2px #fda30e;
+    }
+}
