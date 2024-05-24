@@ -1,0 +1,73 @@
+{
+    "name": "vanilo/demo",
+    "description": "Vanilo Demo Application",
+    "keywords": ["vanilo", "laravel", "ecommerce"],
+    "license": "MIT",
+    "type": "project",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": "^8.0",
+        "ext-gd": "*",
+        "fruitcake/laravel-cors": "^2.2",
+        "guzzlehttp/guzzle": "^7.4",
+        "laravel/framework": "^9.52",
+        "laravel/tinker": "^2.7",
+        "laravel/ui": "^3.4",
+        "vanilo/admin": "^3.6",
+        "vanilo/adyen": "^1.0",
+        "vanilo/braintree": "^1.0",
+        "vanilo/euplatesc": "^3.0",
+        "vanilo/framework": "^3.7",
+        "vanilo/mollie": "^1.0",
+        "vanilo/netopia": "^2.0",
+        "vanilo/paypal": "^1.0",
+        "vanilo/simplepay": "1.0.x-dev",
+        "vanilo/stripe": "1.0.x-dev"
+    },
+    "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.6.7",
+        "spatie/laravel-ignition": "^1.2.3",
+        "fakerphp/faker": "^1.19",
+        "laravel/dusk": "^6.0",
+        "mockery/mockery": "^1.5",
+        "phpunit/phpunit": "^9.5.20"
+    },
+    "autoload": {
+        "classmap": [
+            "database/seeds",
+            "database/factories"
+        ],
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": [
+            ]
+        }
+    },
+    "scripts": {
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate"
+        ],
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover"
+        ]
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true
+    }
+}
