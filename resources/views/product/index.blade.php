@@ -22,6 +22,9 @@
             </ul>
         </div>
     </nav>
+@stop
+
+@section('categories-carousel')
     <!-- Este codigo es de prueba mostrando menu y carrousel -->
     <div class="container-fluid mt-3">
         <div class="row">
@@ -67,6 +70,37 @@
     </div>
 @stop
 
+<!-- Carrusel de productos como para ofertas -->
+@section('carousel-new')
+    <div class="container">
+        <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                @foreach($products->chunk(6) as $key => $chunk)
+                <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
+                    <div class="row">
+                        @foreach($chunk as $product)
+                        <div class="col-md-2">
+                            <div class="card">
+                                @include('product.index._product')
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+                @endforeach
+            </div>
+            <!--<button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button> -->
+        </div>
+    </div>
+@stop
+
 @section('breadcrumbs')
     <li class="breadcrumb-item"><a href="{{ route('product.index') }}">Todo</a></li>
     @if($taxon)
@@ -83,7 +117,7 @@
             </div>
         @endif
         <div class="row">
-
+            <!-- Esto es el filtro -->
             <div class="col-md-3">
                 @include('product.index._filters', ['properties' => $properties, 'filters' => $filters])
             </div>
@@ -107,7 +141,7 @@
 
                 @if(!$products->isEmpty())
                 <div class="card card-default">
-                    <div class="card-header">{{ $taxon ?  'Productos en ' . $taxon->name : 'All Products' }}</div>
+                    <div class="card-header">{{ $taxon ?  'Productos en ' . $taxon->name : 'Todo los productos' }}</div>
 
                     <div class="card-body">
                         <div class="row">

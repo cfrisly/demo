@@ -98,6 +98,8 @@
 
             <div class="container-fluid">
                 @yield('categories-menu')
+                @yield('categories-carousel')
+                @yield('carousel-new')
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb bg-transparent">
                         @yield('breadcrumbs')
