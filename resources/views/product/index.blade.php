@@ -47,13 +47,13 @@
                     </div>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="https://via.placeholder.com/800x400" class="d-block w-100" alt="...">
+                            <img src="/images/1.png" class="d-block w-100" alt="...">
                         </div>
                         <div class="carousel-item">
-                            <img src="https://via.placeholder.com/800x400" class="d-block w-100" alt="...">
+                            <img src="/images/2.png" class="d-block w-100" alt="...">
                         </div>
                         <div class="carousel-item">
-                            <img src="https://via.placeholder.com/800x400" class="d-block w-100" alt="...">
+                            <img src="/images/3.png" class="d-block w-100" alt="...">
                         </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -73,7 +73,7 @@
 <!-- Carrusel de productos como para ofertas -->
 @section('carousel-new')
     <div class="container">
-        <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div id="productCarousel" class="carousel slide" data-bs-interval="false"> <!-- data-bs-ride="carousel" -->
             <div class="carousel-inner">
                 @foreach($products->chunk(6) as $key => $chunk)
                 <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
@@ -89,16 +89,25 @@
                 </div>
                 @endforeach
             </div>
-            <!--<button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
+            <button class="carousel-control-prev custom-carousel-control" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
+            <button class="carousel-control-next custom-carousel-control" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
-            </button> -->
+            </button>
         </div>
     </div>
+    <style>
+        .custom-carousel-control {
+        height: 50px; /* Ajusta la altura del botón según sea necesario */
+        width: 50px; /* Ajusta el ancho del botón según sea necesario */
+        background-color: rgba(0, 0, 0, 0.5); /* Color de fondo de los botones */
+        top: 50%; /* Centra verticalmente los botones */
+        transform: translateY(-50%); /* Centra verticalmente los botones */
+        }
+    </style>
 @stop
 
 @section('breadcrumbs')
