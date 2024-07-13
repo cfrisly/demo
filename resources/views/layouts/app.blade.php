@@ -112,6 +112,19 @@
         </main>
     </div>
 
+    @yield('mas')
+    <footer class="bg-dark text-white mt-5">
+        <div class="container py-4">
+            <div class="row">
+                <div class="col-md-3">
+                    <h5>Nosotros</h5>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
+                    <a href=" {{ route('information.aboutus' )}} "> Nosotros </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
     <!-- Scripts -->
     @stack('alpine')
     <script src="{{ asset('js/app.js') }}"></script>
