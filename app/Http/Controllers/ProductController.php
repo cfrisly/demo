@@ -52,26 +52,4 @@ class ProductController extends Controller
         ]);
     }
 
-    public function about(ProductIndexRequest $request, string $taxonomyName = null, Taxon $taxon = null)
-    {
-        $taxonomies = TaxonomyProxy::get();
-        $properties = PropertyProxy::get();
-
-        if ($taxon) {
-            $this->productFinder->withinTaxon($taxon);
-        }
-
-        foreach ($request->filters($properties) as $property => $values) {
-            $this->productFinder->havingPropertyValuesByName($property, $values);
-        }
-
-        return view('product.aboutus', [
-            'products'   => $this->productFinder->getResults(),
-            'taxonomies' => $taxonomies,
-            'taxon'      => $taxon,
-            'properties' => $properties,
-            'filters'    => $request->filters($properties)
-        ]);
-    }
-
 }

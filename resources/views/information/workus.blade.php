@@ -1,4 +1,4 @@
-@extends('layouts')
+@extends('layouts.app')
 
 @section('categories-menu')
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -22,4 +22,8 @@
             </ul>
         </div>
     </nav>
+@stop
+
+@section('content')
+<h1>Trabaja con Nosotros</h1>
 @stop

@@ -27,11 +27,11 @@ Route::group(['prefix' => 'shop', 'as' => 'product.'], function() {
     Route::get('index', 'ProductController@index')->name('index');
     Route::get('c/{taxonomyName}/{taxon}', 'ProductController@index')->name('category');
     Route::get('p/{slug}', 'ProductController@show')->name('show');
-    Route::get('aboutus', 'ProductController@about')->name('about');
 });
 
 Route::group(['prefix' => 'information', 'as' => 'information.'], function() {
     Route::get('aboutus', 'Information@index')->name('aboutus');
+    Route::get('workus', 'Information@work')->name('workus');
 });
 
 Route::group(['prefix' => 'cart', 'as' => 'cart.'], function() {

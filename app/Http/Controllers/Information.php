@@ -37,4 +37,25 @@ class Information extends Controller
             'filters'    => $request->filters($properties)
         ]);
     }
+
+    public function work(ProductIndexRequest $request, string $taxonomyName = null, Taxon $taxon = null){
+        $taxonomies = TaxonomyProxy::get();
+        $properties = PropertyProxy::get();
+
+        if($taxon){
+            $this->productFinder->withinTaxon($taxon);
+        }
+
+        foreach ($request->filters($properties) as $property => $values) {
+            $this->productFinder->havingPropertyValuesByName($property, $values);
+        }
+
+        return view('information.workus', [
+            'products'   => $this->productFinder->getResults(),
+            'taxonomies' => $taxonomies,
+            'taxon'      => $taxon,
+            'properties' => $properties,
+            'filters'    => $request->filters($properties)
+        ]);
+    }
 }
